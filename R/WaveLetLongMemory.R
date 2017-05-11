@@ -1,8 +1,8 @@
 #=======================================================================#
 # PURPOSE : Long Memory Parameter Estimation                            #
 # AUTHOR  : Sandipan Samanta & Dr. Ranjit Kumar Paul                    #
-# DATE    : 11 Dec, 2016                                                #
-# VERSION : Ver 0.1.0                                                     #
+# DATE    : 09 May, 2017                                                #
+# VERSION : Ver 0.1.0                                                   #
 #=======================================================================#
 
 rm(list=ls(all=TRUE))
@@ -21,7 +21,7 @@ WVLM<- function(Method,Xt,bandwidth,BetaLagParzen,typeWvtrans,filtertype)
       GPH.Est = cbind(GPHEstimates=GPH$d,GPHStandardDev=GPH$sd.as,GPHStandardError=GPH$sd.reg)
       return(GPH.Est)
     }
-    Estimates <- GPH.Estimation(Xt,bandwidth)
+    Estimates <- as.data.frame(GPH.Estimation(Xt,bandwidth))
   }else if(Method=="SEMIPARAMETRIC"){
 
     #======================#
@@ -30,10 +30,10 @@ WVLM<- function(Method,Xt,bandwidth,BetaLagParzen,typeWvtrans,filtertype)
 
     SEM.Estimation = function(X,bandwidth,BetaLagParzen){
       SPERIO = fracdiff::fdSperio(X, bandw.exp = bandwidth, beta = BetaLagParzen)
-      Semi.Para.Est = cbind(SEMEstimates=SPERIO$d,GPHStandardDev=SPERIO$sd.as,GPHStandardError=SPERIO$sd.reg)
+      Semi.Para.Est = cbind(SEMEstimates=SPERIO$d,SPERIOStandardDev=SPERIO$sd.as,SPERIOStandardError=SPERIO$sd.reg)
       return(Semi.Para.Est)
     }
-    Estimates <- SEM.Estimation(Xt,bandwidth,BetaLagParzen)
+    Estimates <- as.data.frame(SEM.Estimation(Xt,bandwidth,BetaLagParzen))
   }else if(Method=="WAVELET"){
     #===============#
     #Wavelet METHOD #
@@ -59,7 +59,9 @@ WVLM<- function(Method,Xt,bandwidth,BetaLagParzen,typeWvtrans,filtertype)
       return(WaveLet.Est)
     }
 
-    Estimates <- Wavelet.Estimation(Xt,typeWvtrans,filtertype)
+    Estimates <- as.data.frame(Wavelet.Estimation(Xt,typeWvtrans,filtertype))
+    colnames(Estimates) <- c('WaveletEstimates','WaveletStandardDev','WaveletStandardError')
   }else("Please choose the correct method !!!")
   return(Estimates)
 }
+
