@@ -1,12 +1,9 @@
 #=======================================================================#
 # PURPOSE : Long Memory Parameter Estimation                            #
 # AUTHOR  : Sandipan Samanta & Dr. Ranjit Kumar Paul                    #
-# DATE    : 09 May, 2017                                                #
-# VERSION : Ver 0.1.0                                                   #
+# DATE    : 23 October, 2017                                            #
+# VERSION : Ver 0.1.2                                                   #
 #=======================================================================#
-
-rm(list=ls(all=TRUE))
-
 
 WVLM<- function(Method,Xt,bandwidth,BetaLagParzen,typeWvtrans,filtertype)
 {

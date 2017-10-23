@@ -1,7 +1,7 @@
 Package: WaveLetLongMemory
 Type: Package
 Title: Estimating Long Memory Parameter using Wavelet
-Version: 0.1.1
+Version: 0.1.2
 Author: Sandipan Samanta and Dr. Ranjit Kumar Paul
 Maintainer: Dr. Ranjit Kumar Paul <ranjitstat@gmail.com>
 Description: Estimation of the long memory parameter using wavelets. Other estimation techniques like 
@@ -11,6 +11,6 @@ License: GPL
 Depends: fracdiff, wmtsa
 LazyData: TRUE
 NeedsCompilation: no
-Packaged: 2017-05-11 07:06:56 UTC; ranjitstat
+Packaged: 2017-10-23 10:54:22 UTC; ranjitstat
 Repository: CRAN
-Date/Publication: 2017-05-11 07:38:48 UTC
+Date/Publication: 2017-10-23 10:54:46 UTC
